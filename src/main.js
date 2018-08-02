@@ -26,12 +26,12 @@ import './global/Validate'
 import './global/Platform'
 import USER from './global/USER'
 import axios from './global/fetch'
-// import _ from 'underscore'
-// import moment from 'moment'
+import _ from 'underscore'
+import moment from 'moment'
 
 window.USER = USER
-// window._ = _
-// window.moment = moment
+window._ = _
+window.moment = moment
 
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
@@ -42,6 +42,7 @@ Vue.prototype.axios = axios
 
 Vue.filter('formatPhone', formatPhone)
 Vue.filter('formatThousands', formatThousands)
+Vue.filter('formatDate', formatDate)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {

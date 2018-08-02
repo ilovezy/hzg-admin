@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+/* Layout */
 import Layout from '@/views/layout/Layout'
 
 export const constantRouterMap = [
@@ -18,7 +19,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: () => import('@/views/dashboard/index'),
       name: 'dashboard',
-      meta: { title: '和掌柜风控管理',icon: 'home', noCache: true }
+      meta: { title: 'dashboard', icon: 'home', noCache: true }
     }]
   },
   {
@@ -43,7 +44,7 @@ export const constantRouterMap = [
       name: 'demoTest',
       meta: { title: 'hlelo 测试用', icon: 'documentation', noCache: true }
     }]
-  },
+  }
 ]
 
 export default new Router({
@@ -79,6 +80,17 @@ export const asyncRouterMap = [
         title: 'directivePermission'
         // if do not set roles, means: this page does not require permission
       }
+    }]
+  },
+
+  {
+    path: '/icon',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: () => import('@/views/svg-icons/index'),
+      name: 'icons',
+      meta: { title: 'icons', icon: 'icon', noCache: true }
     }]
   },
 
@@ -174,17 +186,6 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/tab',
-    component: Layout,
-    children: [{
-      path: 'index',
-      component: () => import('@/views/tab/index'),
-      name: 'tab',
-      meta: { title: 'tab', icon: 'tab' }
-    }]
-  },
-
-  {
     path: '/table',
     component: Layout,
     redirect: '/table/complex-table',
@@ -234,9 +235,42 @@ export const asyncRouterMap = [
   },
 
   {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/list',
+    name: 'example',
+    meta: {
+      title: 'example',
+      icon: 'example'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/example/create'),
+        name: 'createArticle',
+        meta: { title: 'createArticle', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/example/edit'),
+        name: 'editArticle',
+        meta: { title: 'editArticle', noCache: true },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/example/list'),
+        name: 'articleList',
+        meta: { title: 'articleList', icon: 'list' }
+      }
+    ]
+  },
+
+  {
     path: '/error',
     component: Layout,
     redirect: 'noredirect',
+    hidden: true,
     name: 'errorPages',
     meta: {
       title: 'errorPages',
@@ -257,18 +291,6 @@ export const asyncRouterMap = [
       }
     ]
   },
-  {
-    path: '/clipboard',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [{
-      path: 'index',
-      component: () => import('@/views/clipboard/index'),
-      name: 'clipboardDemo',
-      meta: { title: 'clipboardDemo', icon: 'clipboard' }
-    }]
-  },
-
 
   { path: '*', redirect: '/404', hidden: true }
 ]

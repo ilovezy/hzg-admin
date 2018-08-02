@@ -7,20 +7,16 @@
     <div class="right-menu">
       <error-log class="errLog-container right-menu-item"></error-log>
 
-      <el-tooltip effect="dark" :content="$t('navbar.screenfull')" placement="bottom">
-        <screenfull class="screenfull right-menu-item"></screenfull>
+      <!--<el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">-->
+        <!--<theme-picker class="theme-switch right-menu-item"></theme-picker>-->
+      <!--</el-tooltip>-->
+      <el-tooltip effect="dark" content="查看文档" placement="bottom">
+        <router-link to='/documentation' class='document-icon'>文档</router-link>
       </el-tooltip>
 
-      <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
-        <theme-picker class="theme-switch right-menu-item"></theme-picker>
-      </el-tooltip>
-      <el-tooltip effect="dark" content="查看文档" placement="bottom">
-        <router-link to='/documentation'>文档</router-link>
-      </el-tooltip>
-      <el-dropdown class="avatar-container right-menu-item" trigger="click">
+      <el-dropdown class="avatar-container right-menu-item" trigger="hover">
         <div class="avatar-wrapper">
           <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-          <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
@@ -42,7 +38,6 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
-import Screenfull from '@/components/Screenfull'
 import ThemePicker from '@/components/ThemePicker'
 
 export default {
@@ -50,7 +45,6 @@ export default {
     Breadcrumb,
     Hamburger,
     ErrorLog,
-    Screenfull,
     ThemePicker
   },
   computed: {
@@ -111,6 +105,9 @@ export default {
     .theme-switch {
       vertical-align: 15px;
     }
+    .document-icon {
+      margin-right: 30px;
+    }
     .avatar-container {
       height: 50px;
       margin-right: 30px;
@@ -121,7 +118,7 @@ export default {
         .user-avatar {
           width: 40px;
           height: 40px;
-          border-radius: 10px;
+          border-radius: 40px;
         }
         .el-icon-caret-bottom {
           position: absolute;
