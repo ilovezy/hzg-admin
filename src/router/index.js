@@ -55,6 +55,74 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/userManage',
+    component: Layout,
+    redirect: '/userManage/AcInfo',
+    alwaysShow: true, // will always show the root menu
+    meta: {
+      title: '用户管理',
+      icon: 'peoples'
+    },
+    children: [{
+      path: 'AcInfo',
+      component: () => import('@/views/userManage/AcInfo'),
+      name: 'AcInfo',
+      meta: {
+        title: '资产方公司信息录入'
+      }
+    }, {
+      path: 'AcInfoEdit',
+      component: () => import('@/views/userManage/AcInfoEdit'),
+      name: 'AcInfoEdit',
+      meta: {
+        title: '资产方公司管理-新增/编辑/查看'
+      }
+    }, {
+      path: 'AcInfoDetail',
+      component: () => import('@/views/userManage/AcDetail'),
+      name: 'AcInfoDetail',
+      meta: {
+        title: '资产方公司管理-查看' // 与上面一个页面可以合并吧
+      }
+    }, {
+      path: 'AcCheck',
+      component: () => import('@/views/userManage/AcCheck'),
+      name: 'AcCheck',
+      meta: {
+        title: '资产方公司审核授信'
+      }
+    }, {
+      path: 'NbPersonal',
+      component: () => import('@/views/userManage/NbPersonal'),
+      name: 'NbPersonal',
+      meta: {
+        title: '名义借款人管理（个人）'
+      }
+    }, {
+      path: 'NbCompany',
+      component: () => import('@/views/userManage/NbCompany'),
+      name: 'NbCompany',
+      meta: {
+        title: '名义借款人管理（企业）'
+      }
+    },{
+      path: 'BusPerson',
+      component: () => import('@/views/userManage/BusPerson'),
+      name: 'BusPerson',
+      meta: {
+        title: '业务人员管理'
+      }
+    }, {
+      path: 'BusPersonEdit',
+      component: () => import('@/views/userManage/BusPersonEdit'),
+      name: 'BusPersonEdit',
+      meta: {
+        title: '业务人员管理'
+      }
+    }]
+  },
+
+  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
